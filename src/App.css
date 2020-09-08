@@ -1,0 +1,58 @@
+.App {
+    text-align: center;
+}
+
+/* Market data */
+.market-data-container {
+    margin: 1rem auto;
+}
+
+.market-data-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 3rem 0;
+}
+
+.market-data-item {
+    border: 1px solid grey;
+    width: 100px;
+    margin: 0.1rem;
+}
+
+/* Background colors */
+.green {
+    background-color: green;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.red {
+    background-color: red;
+}
+
+.lightred {
+    background-color: lightred;
+}
+
+/* No market data or loading */
+.connection-error,
+.loading {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.connection-error {
+    font-weight: bold;
+    color: red;
+}
+
+/* Market data container title */
+.title {
+    margin-top: 3rem;
+    font-weight: bold;
+}
