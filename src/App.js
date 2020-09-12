@@ -117,7 +117,10 @@ const App = () => {
                 setState((prevState) => ({
                     marketData: data.map((item) => {
                         const { current, id } = item;
-                        const change = prevState.marketData && prevState.marketData[id] ? current - prevState.marketData[id].current : 0;
+                        const change =
+                            prevState.marketData && prevState.marketData[id]
+                                ? ((current - prevState.marketData[id].current) / prevState.marketData[id].current) * 100
+                                : 0;
                         return {
                             ...item,
                             change
@@ -130,7 +133,8 @@ const App = () => {
                 setState((prevState) => ({ marketData: prevState.marketData, error: true, loading: false }));
             }
             // Recursive call to prevent queue buildup on slow connections
-            setTimeout(marketDataCall, FREQ);
+            const marketTimeout = setTimeout(marketDataCall, FREQ);
+            return () => clearTimeout(marketTimeout);
         };
         // Call to backend API
         marketDataCall();
